@@ -1,2 +1,28 @@
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+# My ignore
+/Debug
 /.cproject
 /.project
+/a.out
+/argv-arm.s
+/argv-x86_64.s
+/main-arm.s
+/main-x86_64.s
+/no-argv-arm.s
+/no-argv-x86_64.s
