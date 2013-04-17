@@ -1,0 +1,146 @@
+   1              		.file	"main.c"
+   2              		.text
+   3              	.Ltext0:
+   4              		.globl	add_two
+   6              	add_two:
+   7              	.LFB0:
+   8              		.file 1 "main.c"
+   1:main.c        **** /*
+   2:main.c        ****  * main.c
+   3:main.c        ****  *
+   4:main.c        ****  *  Created on: 07.03.2013
+   5:main.c        ****  *      Author: igor
+   6:main.c        ****  */
+   7:main.c        **** 
+   8:main.c        **** #include <stdio.h>
+   9:main.c        **** #include <stdlib.h>
+  10:main.c        **** 
+  11:main.c        **** int
+  12:main.c        **** add_two(int a, int b)
+  13:main.c        **** {
+   9              		.loc 1 13 0
+  10              		.cfi_startproc
+  11 0000 55       		pushq	%rbp
+  12              	.LCFI0:
+  13              		.cfi_def_cfa_offset 16
+  14              		.cfi_offset 6, -16
+  15 0001 4889E5   		movq	%rsp, %rbp
+  16              	.LCFI1:
+  17              		.cfi_def_cfa_register 6
+  18 0004 897DFC   		movl	%edi, -4(%rbp)
+  19 0007 8975F8   		movl	%esi, -8(%rbp)
+  14:main.c        ****     return a+ b;
+  20              		.loc 1 14 0
+  21 000a 8B45F8   		movl	-8(%rbp), %eax
+  22 000d 8B55FC   		movl	-4(%rbp), %edx
+  23 0010 01D0     		addl	%edx, %eax
+  15:main.c        **** }
+  24              		.loc 1 15 0
+  25 0012 5D       		popq	%rbp
+  26              	.LCFI2:
+  27              		.cfi_def_cfa 7, 8
+  28 0013 C3       		ret
+  29              		.cfi_endproc
+  30              	.LFE0:
+  32              		.globl	add_three
+  34              	add_three:
+  35              	.LFB1:
+  16:main.c        **** 
+  17:main.c        **** int
+  18:main.c        **** add_three(int a, int b, int c)
+  19:main.c        **** {
+  36              		.loc 1 19 0
+  37              		.cfi_startproc
+  38 0014 55       		pushq	%rbp
+  39              	.LCFI3:
+  40              		.cfi_def_cfa_offset 16
+  41              		.cfi_offset 6, -16
+  42 0015 4889E5   		movq	%rsp, %rbp
+  43              	.LCFI4:
+  44              		.cfi_def_cfa_register 6
+  45 0018 4883EC20 		subq	$32, %rsp
+  46 001c 897DEC   		movl	%edi, -20(%rbp)
+  47 001f 8975E8   		movl	%esi, -24(%rbp)
+  48 0022 8955E4   		movl	%edx, -28(%rbp)
+  20:main.c        ****     int tmp = add_two(a, b);
+  49              		.loc 1 20 0
+  50 0025 8B55E8   		movl	-24(%rbp), %edx
+  51 0028 8B45EC   		movl	-20(%rbp), %eax
+  52 002b 89D6     		movl	%edx, %esi
+  53 002d 89C7     		movl	%eax, %edi
+  54 002f E8000000 		call	add_two
+  54      00
+  55 0034 8945FC   		movl	%eax, -4(%rbp)
+  21:main.c        ****     return add_two(tmp, c);
+  56              		.loc 1 21 0
+  57 0037 8B55E4   		movl	-28(%rbp), %edx
+  58 003a 8B45FC   		movl	-4(%rbp), %eax
+  59 003d 89D6     		movl	%edx, %esi
+  60 003f 89C7     		movl	%eax, %edi
+  61 0041 E8000000 		call	add_two
+  61      00
+  22:main.c        **** }
+  62              		.loc 1 22 0
+  63 0046 C9       		leave
+  64              	.LCFI5:
+  65              		.cfi_def_cfa 7, 8
+  66 0047 C3       		ret
+  67              		.cfi_endproc
+  68              	.LFE1:
+  70              		.section	.rodata
+  71              	.LC0:
+  72 0000 4E756D62 		.string	"Number %d\n"
+  72      65722025 
+  72      640A00
+  73              		.text
+  74              		.globl	main
+  76              	main:
+  77              	.LFB2:
+  23:main.c        **** 
+  24:main.c        **** int
+  25:main.c        **** main(int argc, char *argv[])
+  26:main.c        **** {
+  78              		.loc 1 26 0
+  79              		.cfi_startproc
+  80 0048 55       		pushq	%rbp
+  81              	.LCFI6:
+  82              		.cfi_def_cfa_offset 16
+  83              		.cfi_offset 6, -16
+  84 0049 4889E5   		movq	%rsp, %rbp
+  85              	.LCFI7:
+  86              		.cfi_def_cfa_register 6
+  87 004c 4883EC10 		subq	$16, %rsp
+  88 0050 897DFC   		movl	%edi, -4(%rbp)
+  89 0053 488975F0 		movq	%rsi, -16(%rbp)
+  27:main.c        ****     printf("Number %d\n", add_three(7, 6, 5));
+  90              		.loc 1 27 0
+  91 0057 BA050000 		movl	$5, %edx
+  91      00
+  92 005c BE060000 		movl	$6, %esi
+  92      00
+  93 0061 BF070000 		movl	$7, %edi
+  93      00
+  94 0066 E8000000 		call	add_three
+  94      00
+  95 006b 89C2     		movl	%eax, %edx
+  96 006d B8000000 		movl	$.LC0, %eax
+  96      00
+  97 0072 89D6     		movl	%edx, %esi
+  98 0074 4889C7   		movq	%rax, %rdi
+  99 0077 B8000000 		movl	$0, %eax
+  99      00
+ 100 007c E8000000 		call	printf
+ 100      00
+  28:main.c        **** 	return EXIT_SUCCESS;
+ 101              		.loc 1 28 0
+ 102 0081 B8000000 		movl	$0, %eax
+ 102      00
+  29:main.c        **** }
+ 103              		.loc 1 29 0
+ 104 0086 C9       		leave
+ 105              	.LCFI8:
+ 106              		.cfi_def_cfa 7, 8
+ 107 0087 C3       		ret
+ 108              		.cfi_endproc
+ 109              	.LFE2:
+ 111              	.Letext0:

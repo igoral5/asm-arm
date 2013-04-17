@@ -1,0 +1,32 @@
+   1              		.file	"no-argv.c"
+   2              		.text
+   3              	.Ltext0:
+   4              		.globl	main
+   6              	main:
+   7              	.LFB0:
+   8              		.file 1 "no-argv.c"
+   1:no-argv.c     **** /*
+   2:no-argv.c     ****  * no-argv.c
+   3:no-argv.c     ****  *
+   4:no-argv.c     ****  *  Created on: 12.04.2013
+   5:no-argv.c     ****  *      Author: igor
+   6:no-argv.c     ****  */
+   7:no-argv.c     **** main()
+   8:no-argv.c     **** {}
+   9              		.loc 1 8 0
+  10              		.cfi_startproc
+  11 0000 55       		pushq	%rbp
+  12              	.LCFI0:
+  13              		.cfi_def_cfa_offset 16
+  14              		.cfi_offset 6, -16
+  15 0001 4889E5   		movq	%rsp, %rbp
+  16              	.LCFI1:
+  17              		.cfi_def_cfa_register 6
+  18              		.loc 1 8 0
+  19 0004 5D       		popq	%rbp
+  20              	.LCFI2:
+  21              		.cfi_def_cfa 7, 8
+  22 0005 C3       		ret
+  23              		.cfi_endproc
+  24              	.LFE0:
+  26              	.Letext0:

@@ -1,0 +1,50 @@
+   1              		.arch armv6
+   2              		.eabi_attribute 27, 3
+   3              		.eabi_attribute 28, 1
+   4              		.fpu vfp
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 2
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"no-argv.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.align	2
+  19              		.global	main
+  21              	main:
+  22              	.LFB0:
+  23              		.file 1 "no-argv.c"
+   1:no-argv.c     **** /*
+   2:no-argv.c     ****  * no-argv.c
+   3:no-argv.c     ****  *
+   4:no-argv.c     ****  *  Created on: 12.04.2013
+   5:no-argv.c     ****  *      Author: igor
+   6:no-argv.c     ****  */
+   7:no-argv.c     **** main()
+   8:no-argv.c     **** {}
+  24              		.loc 1 8 0
+  25              		.cfi_startproc
+  26              		@ args = 0, pretend = 0, frame = 0
+  27              		@ frame_needed = 1, uses_anonymous_args = 0
+  28              		@ link register save eliminated.
+  29 0000 04B02DE5 		str	fp, [sp, #-4]!
+  30              	.LCFI0:
+  31              		.cfi_def_cfa_offset 4
+  32              		.cfi_offset 11, -4
+  33 0004 00B08DE2 		add	fp, sp, #0
+  34              	.LCFI1:
+  35              		.cfi_def_cfa_register 11
+  36              		.loc 1 8 0
+  37 0008 0300A0E1 		mov	r0, r3
+  38 000c 00D08BE2 		add	sp, fp, #0
+  39 0010 0008BDE8 		ldmfd	sp!, {fp}
+  40 0014 1EFF2FE1 		bx	lr
+  41              		.cfi_endproc
+  42              	.LFE0:
+  44              	.Letext0:

@@ -1,0 +1,102 @@
+   1              		.file	"argv.c"
+   2              		.text
+   3              	.Ltext0:
+   4              		.section	.rodata
+   5              	.LC3:
+   6 0000 25660A00 		.string	"%f\n"
+   7              		.text
+   8              		.globl	main
+  10              	main:
+  11              	.LFB0:
+  12              		.file 1 "argv.c"
+   1:argv.c        **** /*
+   2:argv.c        ****  * argv.c
+   3:argv.c        ****  *
+   4:argv.c        ****  *  Created on: 12.04.2013
+   5:argv.c        ****  *      Author: igor
+   6:argv.c        ****  */
+   7:argv.c        **** #include <stdio.h>
+   8:argv.c        **** #include <stdlib.h>
+   9:argv.c        **** 
+  10:argv.c        **** int
+  11:argv.c        **** main(int argc, char *argv[])
+  12:argv.c        **** {
+  13              		.loc 1 12 0
+  14              		.cfi_startproc
+  15 0000 55       		pushq	%rbp
+  16              	.LCFI0:
+  17              		.cfi_def_cfa_offset 16
+  18              		.cfi_offset 6, -16
+  19 0001 4889E5   		movq	%rsp, %rbp
+  20              	.LCFI1:
+  21              		.cfi_def_cfa_register 6
+  22 0004 4883EC30 		subq	$48, %rsp
+  23 0008 897DDC   		movl	%edi, -36(%rbp)
+  24 000b 488975D0 		movq	%rsi, -48(%rbp)
+  13:argv.c        ****     if (argc > 1)
+  25              		.loc 1 13 0
+  26 000f 837DDC01 		cmpl	$1, -36(%rbp)
+  27 0013 7E65     		jle	.L2
+  28              	.LBB2:
+  14:argv.c        ****     {
+  15:argv.c        ****         int a = 1;
+  29              		.loc 1 15 0
+  30 0015 C745FC01 		movl	$1, -4(%rbp)
+  30      000000
+  16:argv.c        ****         double y = 0.5L;
+  31              		.loc 1 16 0
+  32 001c 48B80000 		movabsq	$4602678819172646912, %rax
+  32      00000000 
+  32      E03F
+  33 0026 488945F0 		movq	%rax, -16(%rbp)
+  17:argv.c        ****         double x = 0.7L;
+  34              		.loc 1 17 0
+  35 002a 48B86666 		movabsq	$4604480259023595110, %rax
+  35      66666666 
+  35      E63F
+  36 0034 488945E8 		movq	%rax, -24(%rbp)
+  18:argv.c        ****         double z = 1.2L;
+  37              		.loc 1 18 0
+  38 0038 48B83333 		movabsq	$4608083138725491507, %rax
+  38      33333333 
+  38      F33F
+  39 0042 488945E0 		movq	%rax, -32(%rbp)
+  19:argv.c        ****         printf("%f\n", x+y+z);
+  40              		.loc 1 19 0
+  41 0046 F20F1045 		movsd	-24(%rbp), %xmm0
+  41      E8
+  42 004b F20F5845 		addsd	-16(%rbp), %xmm0
+  42      F0
+  43 0050 F20F5845 		addsd	-32(%rbp), %xmm0
+  43      E0
+  44 0055 B8000000 		movl	$.LC3, %eax
+  44      00
+  45 005a 4889C7   		movq	%rax, %rdi
+  46 005d B8010000 		movl	$1, %eax
+  46      00
+  47 0062 E8000000 		call	printf
+  47      00
+  20:argv.c        ****         puts(argv[1]);
+  48              		.loc 1 20 0
+  49 0067 488B45D0 		movq	-48(%rbp), %rax
+  50 006b 4883C008 		addq	$8, %rax
+  51 006f 488B00   		movq	(%rax), %rax
+  52 0072 4889C7   		movq	%rax, %rdi
+  53 0075 E8000000 		call	puts
+  53      00
+  54              	.L2:
+  55              	.LBE2:
+  21:argv.c        ****     }
+  22:argv.c        ****     return EXIT_SUCCESS;
+  56              		.loc 1 22 0
+  57 007a B8000000 		movl	$0, %eax
+  57      00
+  23:argv.c        **** }
+  58              		.loc 1 23 0
+  59 007f C9       		leave
+  60              	.LCFI2:
+  61              		.cfi_def_cfa 7, 8
+  62 0080 C3       		ret
+  63              		.cfi_endproc
+  64              	.LFE0:
+  66              	.Letext0:
